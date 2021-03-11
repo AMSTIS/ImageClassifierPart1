@@ -24,8 +24,8 @@ filename_list = listdir("pet_images/")
 
 # Print 10 of the filenames from folder pet_images/
 print("\nPrints 10 filenames from folder pet_images/")
-for idx in range(0, 10, 1):
-    print("{:2d} file: {:>25}".format(idx + 1, filename_list[idx]) )
+for indexes in range(0, 10, 1):
+    print("{:2d} file: {:>25}".format(indexes + 1, filename_list[indexes]))
     
 # TODO 2: Define get_pet_labels function below please be certain to replace None
 #       in the return statement with results_dic dictionary that you create 
@@ -58,16 +58,16 @@ def get_pet_labels(image_dir):
     # Adds new key-value pairs to dictionary ONLY when key doesn't already exist. This dictionary's value is
     # a List that contains only one item - the pet image label
 
-    for in_file in filename_list:
+    for single_file in filename_list:
         # Sets pet_image variable to a filename 
         pet_label = ""
-        pet_image = in_file
+        pet_image = single_file
 
         # Sets string to lower case letters
-        low_pet_image = pet_image.lower()
+        pet_image_lower_case = pet_image.lower()
 
         # Splits lower case string by _ to break into words 
-        word_list_pet_image = low_pet_image.split("_")
+        pet_image_splitted = pet_image_lower_case.split("_")
 
         # Create pet_name starting as empty string
         pet_name = ""
@@ -75,7 +75,7 @@ def get_pet_labels(image_dir):
         # Loops to check if word in pet name is only
         # alphabetic characters - if true append word
         # to pet_name separated by trailing space 
-        for word in word_list_pet_image:
+        for word in pet_image_splitted:
             if word.isalpha():
                 pet_name += word + " "
 
@@ -83,12 +83,12 @@ def get_pet_labels(image_dir):
         pet_name = pet_name.strip()
 
         # Prints resulting pet_name
-        print("\nFilename=", pet_image, "   Label=", pet_name)
+        print("\nFilename=", pet_image, " Label=", pet_name)
 
-        if in_file not in results_dic:
-            results_dic[in_file] = [pet_name]
+        if single_file not in results_dic:
+            results_dic[single_file] = [pet_name]
         else:
-            print("Warning Duplicate pet imge exists")
+            print("Warning Duplcate pet imge exists")
     
     # Replace None with the results_dic dictionary that you created with this
     # function

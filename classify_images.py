@@ -75,18 +75,19 @@ def classify_images(images_dir, results_dic, model):
     
         classifier_output = classifier_output.split(",")
         tot_len = len(classifier_output)
+
         for k in range(tot_len):
-            classifier_output[k] = classifier_output[k].lower()
-            classifier_output[k] = classifier_output[k].strip()
-            
+            stripped = classifier_output[k].strip()
+            lowered = stripped.lower()
+            classifier_output[k] = lowered
         
         classifier_output = ",".join(classifier_output)
-        
-        correct_value = results_dic[key][0]
+
+        label_index = 0
+        correct_value = results_dic[key][label_index]
         results_dic[key].append(classifier_output)
         
         if correct_value in classifier_output:
             results_dic[key].append(1)
-            
         else:
             results_dic[key].append(0)

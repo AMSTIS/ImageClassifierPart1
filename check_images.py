@@ -39,17 +39,16 @@ from print_results import print_results
 # Main program function defined below
 def main():
     # TODO 0: Measures total program runtime by collecting start time
-    start_time = time()
-    wait_time = 10
-    print("Waiting for " + str(wait_time) + " Seconds")
-    sleep(10)
+    program_starting_time = time()
+    program_wait_time = 10
+    print("Program_Wait time is" + str(program_wait_time) + " S")
+    sleep(program_wait_time)
     # TODO 1: Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arugments from user as input from
     # the user running the program from a terminal window. This function returns
     # the collection of these command line arguments from the function call as
     # the variable in_arg
     in_arg = get_input_args()
-    #print("test in_arg",in_arg)
     
     # Function that checks command line arguments using in_arg  
     check_command_line_arguments(in_arg)
@@ -119,13 +118,13 @@ def main():
     print_results(results, results_stats, None, True, True)
  
     # TODO 0: Measure total program runtime by collecting end time
-    end_time = time()
+    program_ending_time = time()
     
     # TODO 0: Computes overall runtime in seconds & prints it in hh:mm:ss format
-    tot_time = end_time - start_time #calculate difference between end time and start time
+    complete_program_time = program_ending_time - program_starting_time
     print("\n** Total Elapsed Runtime:",
-          str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
-          +str(int((tot_time%3600)%60)) )
+          str(int((complete_program_time/3600)))+":"+str(int((complete_program_time%3600)/60))+":"
+          +str(int((complete_program_time%3600)%60)) )
 
 
 # Call to main function to run the program
